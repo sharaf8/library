@@ -24,7 +24,7 @@ export class BooksController {
 
   @Get('get-book/:title')
   @ApiOperation({
-    summary: 'Ger the book',
+    summary: 'Get the book',
     description: 'Get a book by title',
   })
   @ApiResponse({
