@@ -1,0 +1,19 @@
+version: '3'
+services:
+  postgresql:
+    image: postgres
+    container_name: library
+    ports:
+      - "5431:5432"
+    environment:
+      POSTGRES_HOST: localhost
+      POSTGRES_USER: sharaf
+      POSTGRES_PASSWORD: 1122
+      POSTGRES_DB: library
+    restart: always
+
+  redis:
+    image: redis
+    container_name: redis-library
+    ports:
+      - "6378:6379"
