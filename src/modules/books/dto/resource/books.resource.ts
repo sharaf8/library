@@ -5,7 +5,7 @@ export class BooksResource {
   title!: string;
 
   @IsNumber()
-  InternationalStandardBookNumber!: string;
+  bookNumber!: string;
 
   @IsNumber()
   price!: number;

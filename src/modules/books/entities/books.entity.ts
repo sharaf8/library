@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity('books') // or any table name you want
+@Entity('books')
 export class BooksEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -18,7 +18,7 @@ export class BooksEntity {
   publicationYear: string;
 
   @Column()
-  InternationalStandardBookNumber: string;
+  bookNumber: string;
 
   @Column()
   amount: number;

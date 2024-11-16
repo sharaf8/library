@@ -15,8 +15,8 @@ export class BooksRepository {
   async create(createBooksDto: CreateBooksDto): Promise<BooksResource> {
     const existingBook = await this.booksRepository.findOne({
       where: {
-        InternationalStandardBookNumber:
-          createBooksDto.InternationalStandardBookNumber,
+        bookNumber:
+          createBooksDto.bookNumber,
       },
     });
     if (existingBook) {
@@ -37,7 +37,7 @@ export class BooksRepository {
 
     return {
       title: book.title,
-      InternationalStandardBookNumber: book.InternationalStandardBookNumber,
+      bookNumber: book.bookNumber,
       price: book.price,
     };
   }

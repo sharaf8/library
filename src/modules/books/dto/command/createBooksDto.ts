@@ -37,7 +37,7 @@ export class CreateBooksDto {
     description: 'The International Standard Book Number (ISBN) of the book',
   })
   @IsString()
-  InternationalStandardBookNumber!: string;
+  bookNumber!: string;
 
   @ApiProperty({
     example: '100',

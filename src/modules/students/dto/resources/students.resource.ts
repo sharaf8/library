@@ -1,6 +1,6 @@
-import { IsString } from "class-validator";
+import { IsString } from 'class-validator';
 
-export class StudentsResource{
+export class StudentsResource {
   @IsString()
   firstName: string;
 

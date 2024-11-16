@@ -2,13 +2,12 @@ import { Module } from '@nestjs/common';
 import { BooksModule } from './modules/books/books.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import configurations from './configurations';
-import { SequelizeModule } from '@nestjs/sequelize';
 import { StudentsModule } from './modules/students/students.module';
 import { BorrowModule } from './modules/borrow/borrow.module';
 import { BooksEntity } from './modules/books/entities/books.entity';
 import { StudentsEntity } from './modules/students/entities/students.entity';
-import { BorrowingEntity } from "./modules/borrow/entities/borrowing.entity";
-import { TypeOrmModule } from "@nestjs/typeorm";
+import { BorrowingEntity } from './modules/borrow/entities/borrowing.entity';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
