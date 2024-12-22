@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { BorrowingEntity } from '../entities/borrowing.entity';
 import { BorrowingDto } from '../dto/commands/borrowing.dto';
-import { InjectRepository } from "@nestjs/typeorm";
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class BorrowingRepository {
@@ -16,7 +16,7 @@ export class BorrowingRepository {
   }
 
   async create(createBorrowing: BorrowingDto) {
-    const borrow = await this.borrowingRepository.create(createBorrowing);
+    const borrow = this.borrowingRepository.create(createBorrowing);
 
     return await this.borrowingRepository.save(borrow);
   }

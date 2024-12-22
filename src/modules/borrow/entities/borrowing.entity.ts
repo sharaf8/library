@@ -2,8 +2,8 @@ import {
   Column,
   Entity,
   PrimaryGeneratedColumn,
-  CreateDateColumn, ManyToOne
-} from "typeorm";
+  CreateDateColumn,
+} from 'typeorm';
 
 @Entity('borrowing')
 export class BorrowingEntity {

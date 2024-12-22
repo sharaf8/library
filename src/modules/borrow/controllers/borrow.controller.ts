@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { ApiOperation, ApiTags } from "@nestjs/swagger";
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { BorrowService } from '../services/borrow.service';
 import { BorrowingDto } from '../dto/commands/borrowing.dto';
 import { BorrowingResource } from '../dto/resources/borrowing.resource';

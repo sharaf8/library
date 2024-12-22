@@ -17,11 +17,11 @@ export class StudentDto {
   lastName: string;
 
   @ApiProperty({
-    example: '11-b',
+    example: '11-B',
     description: 'The class and grade of the student',
   })
   @IsString()
-  @Matches(/^[1-9]$|^[1][0-2]-[A-Z]$/, {
+  @Matches(/^[1-12]-[A-Z]$/, {
     message: 'Class should be in format Class-Grade (11-A, 12-B)',
   })
   class: string;

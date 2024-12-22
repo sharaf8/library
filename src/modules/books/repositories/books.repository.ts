@@ -1,4 +1,8 @@
-import { ConflictException, Injectable, NotFoundException } from "@nestjs/common";
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { BooksEntity } from '../entities/books.entity';
@@ -13,17 +17,17 @@ export class BooksRepository {
   ) {}
 
   async create(createBooksDto: CreateBooksDto): Promise<BooksResource> {
-    const existingBook = await this.booksRepository.findOne({
+    const existingBook = await this.booksRepository.find({
       where: {
-        bookNumber:
-          createBooksDto.bookNumber,
+        bookNumber: createBooksDto.bookNumber,
+        title: createBooksDto.title,
       },
     });
     if (existingBook) {
       throw new ConflictException('This book already exists.');
     }
 
-    const book = await this.booksRepository.create(createBooksDto);
+    const book = this.booksRepository.create(createBooksDto);
     return await this.booksRepository.save(book);
   }
 
@@ -36,7 +40,7 @@ export class BooksRepository {
       throw new NotFoundException('Can not find book with title ' + title + '');
 
     return {
-      title: book.title,
+      id: book.id,
       bookNumber: book.bookNumber,
       price: book.price,
     };

@@ -2,7 +2,7 @@ import { IsNumber, IsString } from 'class-validator';
 
 export class BooksResource {
   @IsString()
-  title!: string;
+  id: number;
 
   @IsNumber()
   bookNumber!: string;

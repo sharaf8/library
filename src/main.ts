@@ -9,13 +9,13 @@ async function bootstrap() {
   const port = configService.get('port');
   const config = new DocumentBuilder()
     .setTitle('API')
-    .setDescription('Library')
-    .setVersion('1.0')
+    .setDescription('This is about school libraries for API')
+    .setVersion('1.1')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
   await app.listen(port);
 
-  console.log('The program is running on port: ' + port);
+  console.log(`The program is running on ${'http://localhost:4321/api/'} URL.`);
 }
 bootstrap();
