@@ -17,7 +17,7 @@ export class BooksRepository {
   ) {}
 
   async create(createBooksDto: CreateBooksDto): Promise<BooksResource> {
-    const existingBook = await this.booksRepository.find({
+    const existingBook = await this.booksRepository.findOne({
       where: {
         bookNumber: createBooksDto.bookNumber,
         title: createBooksDto.title,
@@ -44,5 +44,12 @@ export class BooksRepository {
       bookNumber: book.bookNumber,
       price: book.price,
     };
+  }
+
+  async delete(title: string) {
+    const Book = await this.findOne(title);
+
+    await this.booksRepository.delete(Book.id);
+    return 'The book deleted successfully.';
   }
 }

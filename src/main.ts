@@ -10,12 +10,12 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('API')
     .setDescription('This is about school libraries for API')
-    .setVersion('1.1')
+    .setVersion('1.6.5')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
   await app.listen(port);
 
-  console.log(`The program is running on ${'http://localhost:4321/api/'} URL.`);
+  console.log(`Please open this: ${'http://localhost:4321/api/'} URL.`);
 }
 bootstrap();

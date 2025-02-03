@@ -1,5 +1,5 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { BooksService } from '../services/books.service';
 import { CreateBooksDto } from '../dto/command/createBooksDto';
 import { BooksResource } from '../dto/resource/books.resource';
@@ -34,5 +34,21 @@ export class BooksController {
   @ApiResponse({ status: 404, description: 'Not Found the book' })
   async find(@Param('title') title: string): Promise<BooksResource> {
     return this.booksService.find(title);
+  }
+  @Delete('delete-book/:title')
+  @ApiOperation({
+    summary: 'Delete a book',
+    description: 'Delete a book by id',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'The book deleted successfully.',
+  })
+  @ApiResponse({
+    status: 404,
+    description: 'Not Found the book',
+  })
+  async delete(@Param('title') title: string) {
+    return this.booksService.delete(title);
   }
 }

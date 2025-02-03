@@ -23,4 +23,8 @@ export class BooksService {
   async find(title: string): Promise<BooksResource> {
     return this.booksRepository.findOne(title);
   }
+
+  async delete(title){
+    return this.booksRepository.delete(title);
+  }
 }
