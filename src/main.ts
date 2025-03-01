@@ -9,7 +9,7 @@ async function bootstrap() {
   const port = configService.get('port');
   const config = new DocumentBuilder()
     .setTitle('API')
-    .setDescription('This is about school libraries for API')
+    .setDescription('This is about school libraries for API.')
     .setVersion('1.6.8')
     .build();
   const document = SwaggerModule.createDocument(app, config);
