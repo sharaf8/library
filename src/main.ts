@@ -16,6 +16,6 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
   await app.listen(port);
 
-  console.log(`Please open this: ${'http://localhost:4321/api/'} URL.`);
+  console.log(`Please open this URL: ${'http://localhost:4321/api/'}.`);
 }
 bootstrap();
