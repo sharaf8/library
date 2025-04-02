@@ -22,7 +22,7 @@ export class StudentDto {
   })
   @IsString()
   @Matches(/^[1-12]-[A-Z]$/, {
-    message: 'Class should be in format Class-Grade (11-A, 12-B)',
+    message: 'Class should be in format Class-Grade (1-A, 12-B)',
   })
   class: string;
 

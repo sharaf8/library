@@ -12,7 +12,7 @@ export class StudentsService {
   }
 
   add(studentsDto: StudentDto): Promise<StudentsResource> {
-    if (!/^[1-9]$|^[1][0-2]-[A-Z]$/.test(studentsDto.class)) {
+    if (/^[1-12]-[A-Z]$/.test(studentsDto.class)) {
       throw new BadRequestException(
         'Class format should be in the form of Class-Grade (11-A, 12-B)',
       );
