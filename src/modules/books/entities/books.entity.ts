@@ -26,7 +26,4 @@ export class BooksEntity {
 
   @Column('float')
   price: number;
-
-  @OneToMany(() => BorrowingEntity, (borrowing) => borrowing.book)
-  borrowings: BorrowingEntity[];
 }
