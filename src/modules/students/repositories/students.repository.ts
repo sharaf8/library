@@ -22,7 +22,6 @@ export class StudentsRepository {
       throw new ConflictException('Student already exists');
     }
     const student = await this.studentsRepository.create(students);
-
     return await this.studentsRepository.save(student);
   }
 

@@ -3,7 +3,9 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   CreateDateColumn,
+  ManyToOne,
 } from 'typeorm';
+import { StudentsEntity } from '../../students/entities/students.entity';
 
 @Entity('borrowing')
 export class BorrowingEntity {
@@ -21,4 +23,7 @@ export class BorrowingEntity {
 
   @Column({ type: 'timestamp', nullable: true })
   return_date: Date;
+
+  @ManyToOne(() => StudentsEntity, { onDelete: 'CASCADE' })
+  student: StudentsEntity;
 }

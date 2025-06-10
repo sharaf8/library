@@ -33,4 +33,11 @@ export class StudentDto {
   @IsEmail()
   @IsString()
   email: string;
+
+  @ApiProperty({
+    example: '1234567890',
+    description: 'Password for student',
+  })
+  @IsString()
+  password: string;
 }
