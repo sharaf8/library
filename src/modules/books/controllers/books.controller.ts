@@ -18,7 +18,7 @@ export class BooksController {
     status: 200,
     description: 'Added a new book successfully.',
   })
-  create(@Body() book: CreateBooksDto): Promise<BooksResource> {
+  create(@Body() book: CreateBooksDto): Promise<boolean> {
     return this.booksService.create(book);
   }
 

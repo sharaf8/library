@@ -1,11 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Entity, Column, OneToMany, Unique } from 'typeorm';
 import { BorrowingEntity } from '../../borrow/entities/borrowing.entity';
+import { BaseEntity } from '../../../configurations/entities/base.entity';
 
 @Entity('students')
-export class StudentsEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
-
+@Unique(['email'])
+export class StudentsEntity extends BaseEntity {
   @Column()
   firstName: string;
 
@@ -18,6 +17,6 @@ export class StudentsEntity {
   @Column()
   email: string;
 
-  @OneToMany(() => BorrowingEntity, (borrowing) => borrowing.student)
+  @OneToMany(() => BorrowingEntity, (br) => br.student)
   borrowings: BorrowingEntity[];
 }

@@ -16,7 +16,7 @@ export class BooksRepository {
     private readonly booksRepository: Repository<BooksEntity>,
   ) {}
 
-  async create(createBooksDto: CreateBooksDto): Promise<BooksResource> {
+  async create(createBooksDto: CreateBooksDto): Promise<boolean> {
     const existingBook = await this.booksRepository.findOne({
       where: {
         bookNumber: createBooksDto.bookNumber,
@@ -28,7 +28,8 @@ export class BooksRepository {
     }
 
     const book = this.booksRepository.create(createBooksDto);
-    return await this.booksRepository.save(book);
+    await this.booksRepository.save(book);
+    return true;
   }
 
   async findOne(title: string): Promise<BooksResource> {

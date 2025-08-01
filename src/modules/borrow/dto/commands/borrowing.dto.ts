@@ -8,7 +8,7 @@ export class BorrowingDto {
   })
   @IsNumber()
   @IsNotEmpty()
-  book_id!: number;
+  booksId!: string;
 
   @ApiProperty({
     example: 1,
@@ -16,5 +16,5 @@ export class BorrowingDto {
   })
   @IsNumber()
   @IsNotEmpty()
-  student_id!: number;
+  studentId!: string;
 }

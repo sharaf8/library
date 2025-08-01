@@ -1,8 +1,8 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { StudentsService } from '../services/students.service';
 import { ApiOperation, ApiTags, ApiResponse } from '@nestjs/swagger';
 import { StudentsResource } from '../dto/resources/students.resource';
-import { StudentDto } from '../dto/common/students.dto';
+import { StudentsCommand } from '../dto/common/students.command';
 
 @ApiTags('Students')
 @Controller('students')
@@ -19,9 +19,9 @@ export class StudentsController {
   })
   @ApiResponse({ status: 404, description: 'Not Found the student' })
   async find(
-    @Query('firstName') firstName: string,
-    @Query('lastName') lastName: string,
-  ): Promise<StudentsResource> {
+    @Param('firstName') firstName: string,
+    @Param('lastName') lastName: string,
+  ): Promise<StudentsResource[]> {
     return this.studentsService.findOne(firstName, lastName);
   }
 
@@ -31,7 +31,16 @@ export class StudentsController {
     description: 'Add a new student to the university.',
   })
   @ApiResponse({ status: 201, description: 'The student added successfully.' })
-  async add(@Body() student: StudentDto): Promise<StudentsResource> {
+  async add(@Body() student: StudentsCommand): Promise<StudentsResource> {
     return this.studentsService.add(student);
+  }
+
+  @Delete()
+  @ApiOperation({
+    summary: 'Delete a new student.',
+    description: 'Delete a student from the university.',
+  })
+  async delete(@Param('email') email: string): Promise<boolean> {
+    return this.studentsService.deleteStudent(email);
   }
 }

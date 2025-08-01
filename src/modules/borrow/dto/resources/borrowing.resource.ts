@@ -2,10 +2,10 @@ import { IsDate, IsNumber, IsString } from 'class-validator';
 
 export class BorrowingResource {
   @IsNumber()
-  book_id: number;
+  booksId: string;
 
   @IsNumber()
-  student_id: number;
+  studentId: string;
 
   @IsDate()
   @IsString()

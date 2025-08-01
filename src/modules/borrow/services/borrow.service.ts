@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { BorrowingDto } from '../dto/commands/borrowing.dto';
 import { BorrowingRepository } from '../repositories/borrowing.repository';
-import { BorrowingEntity } from '../entities/borrowing.entity';
+import { BorrowingResource } from '../dto/resources/borrowing.resource';
 
 @Injectable()
 export class BorrowService {
   constructor(private readonly borrowingRepository: BorrowingRepository) {}
 
-  async add(borrow: BorrowingDto): Promise<BorrowingEntity> {
+  async add(borrow: BorrowingDto): Promise<BorrowingResource> {
     const borrowRecord = {
       ...borrow,
       borrow_date: new Date(),
@@ -17,7 +17,7 @@ export class BorrowService {
     return await this.borrowingRepository.create(borrowRecord);
   }
 
-  async findOne(id: number): Promise<BorrowingEntity> {
+  async findOne(id: number): Promise<BorrowingResource> {
     return await this.borrowingRepository.findOne(id);
   }
 }

@@ -1,11 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { BorrowingEntity } from '../../borrow/entities/borrowing.entity';
+import { BaseEntity } from '../../../configurations/entities/base.entity';
 
 @Entity('books')
-export class BooksEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
-
+export class BooksEntity extends BaseEntity {
   @Column()
   title: string;
 
@@ -26,4 +24,7 @@ export class BooksEntity {
 
   @Column('float')
   price: number;
+
+  @OneToMany(() => BorrowingEntity, (br) => br.book)
+  borrowings: BorrowingEntity[];
 }

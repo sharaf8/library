@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { StudentsRepository } from '../repositories/students.repository';
-import { StudentDto } from '../dto/common/students.dto';
+import { StudentsCommand } from '../dto/common/students.command';
 import { StudentsResource } from '../dto/resources/students.resource';
 
 @Injectable()
@@ -11,7 +11,7 @@ export class StudentsService {
     return name[0].toUpperCase() + name.slice(1).toLowerCase();
   }
 
-  add(studentsDto: StudentDto): Promise<StudentsResource> {
+  add(studentsDto: StudentsCommand): Promise<StudentsResource> {
     if (/^[1-12]-[A-Z]$/.test(studentsDto.class)) {
       throw new BadRequestException(
         'Class format should be in the form of Class-Grade (11-A, 12-B)',
@@ -22,9 +22,13 @@ export class StudentsService {
     return this.studentsRepository.add(studentsDto);
   }
 
-  findOne(firstName: string, lastName: string): Promise<StudentsResource> {
+  findOne(firstName: string, lastName: string): Promise<StudentsResource[]> {
     firstName = this.fixName(firstName);
     lastName = this.fixName(lastName);
     return this.studentsRepository.findOne(firstName, lastName);
+  }
+
+  deleteStudent(email: string): Promise<boolean> {
+    return this.studentsRepository.deleteStuden(email);
   }
 }

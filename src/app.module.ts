@@ -4,10 +4,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import configurations from './configurations';
 import { StudentsModule } from './modules/students/students.module';
 import { BorrowModule } from './modules/borrow/borrow.module';
-import { BooksEntity } from './modules/books/entities/books.entity';
-import { StudentsEntity } from './modules/students/entities/students.entity';
-import { BorrowingEntity } from './modules/borrow/entities/borrowing.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { QueryRunnerService } from './services/query-runner/query-runner.service';
 
 @Module({
   imports: [
@@ -24,7 +22,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         username: config.get('DB_USER'),
         password: config.get('DB_PASSWORD'),
         database: config.get('DB_NAME'),
-        entities: [BooksEntity, StudentsEntity, BorrowingEntity],
+        entities: [__dirname + '/modules/**/*.entity{.ts,.js}'],
         synchronize: true,
       }),
       inject: [ConfigService],
@@ -33,6 +31,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     BorrowModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [QueryRunnerService],
 })
 export class AppModule {}
